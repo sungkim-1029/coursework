@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="/Users/sunghokim/Documents/Reference doc. For Installed Utilites/java_libs/j3d1.6.0_10/lib/ext/j3dcore.jar"/>
+	<classpathentry kind="lib" path="/Users/sunghokim/Documents/Reference doc. For Installed Utilites/java_libs/j3d1.6.0_10/lib/ext/j3dutils.jar"/>
+	<classpathentry kind="lib" path="/Users/sunghokim/Documents/Reference doc. For Installed Utilites/java_libs/j3d1.6.0_10/lib/ext/vecmath.jar"/>
+	<classpathentry kind="lib" path="/Users/sunghokim/Documents/Reference doc. For Installed Utilites/java_libs/jogamp-all-platforms/jar/jogl-all.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/sunghokim/Documents/Reference doc. For Installed Utilites/java_libs/jogamp-all-platforms/jar"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sunghokim/Documents/Reference doc. For Installed Utilites/java_libs/jogamp-all-platforms/jar/joal.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/sunghokim/Documents/Reference doc. For Installed Utilites/java_libs/jogamp-all-platforms/jar"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sunghokim/Documents/Reference doc. For Installed Utilites/java_libs/jogamp-all-platforms/jar/gluegen-rt.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/sunghokim/Documents/Reference doc. For Installed Utilites/java_libs/jogamp-all-platforms/jar"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

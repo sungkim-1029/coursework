@@ -5,7 +5,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 
 
-public class Ballon {
+public class Balloon {
 
     private double x;
     private double y;
@@ -20,11 +20,11 @@ public class Ballon {
     private static final Color DEFAULT_COLOR_OVAL = Color.magenta;
     private static final Color DEFAULT_COLOR_LINE = Color.black;
     
-    public Ballon() {
+    public Balloon() {
         //None
     }
     
-    public Ballon(double x, double y, double w, double h, Color colorOval, Color colorLine) {
+    public Balloon(double x, double y, double w, double h, Color colorOval, Color colorLine) {
         this.x = x;
         this.y = y;
         this.w = w;
@@ -72,11 +72,11 @@ public class Ballon {
         return DEFAULT_COLOR_LINE;
     }
 
-    public Ballon(double x, double y, double w, double h) {
+    public Balloon(double x, double y, double w, double h) {
         this(x, y, w, h, DEFAULT_COLOR_OVAL, DEFAULT_COLOR_LINE);
     }
 
-    public Ballon(double x, double y, double w, double h, Color colorOval) {
+    public Balloon(double x, double y, double w, double h, Color colorOval) {
         this(x, y, w, h, colorOval, DEFAULT_COLOR_LINE);
     }
     

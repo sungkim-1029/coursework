@@ -11,14 +11,15 @@ public class Hw3 extends Frame {
     
     private Ellipse2D oval;
     private Line2D line;
-    private List<Ballon> Ballons;
+    private List<Balloon> balloons;
     private Graphics2D g2;
     private final int MID = 200;
     private final int TOP = 200;
     
     Hw3() {
 
-        Ballons = new ArrayList<Ballon>();
+    	// make balloon group
+        balloons = new ArrayList<Balloon>();
         
         setTitle("HW3");
         setSize(400, 400);
@@ -26,11 +27,11 @@ public class Hw3 extends Frame {
         setForeground(Color.black);
         
         // Make Balloons
-        makeBallon(MID - 100, TOP - 40, 40, 50, Color.yellow);
-        makeBallon(MID - 50, TOP, 40, 50, Color.white);
-        makeBallon(MID + 16, TOP + 45, 50, 60, Color.red);
-        makeBallon(MID + 25, TOP + 5, 46, 60, Color.orange);
-        makeBallon(MID - 75, TOP + 55, 62, 70, Color.blue);
+        makeAndGroupBalloon(MID - 100, TOP - 40, 40, 50, Color.yellow);
+        makeAndGroupBalloon(MID - 50, TOP, 40, 50, Color.white);
+        makeAndGroupBalloon(MID + 16, TOP + 45, 50, 60, Color.red);
+        makeAndGroupBalloon(MID + 25, TOP + 5, 46, 60, Color.orange);
+        makeAndGroupBalloon(MID - 75, TOP + 55, 62, 70, Color.blue);
         
         addWindowListener(new WindowAdapter() {
 
@@ -44,12 +45,19 @@ public class Hw3 extends Frame {
         this.addMouseListener(new mousePressHandler());
     }
     
-    public void makeBallon(double x, double y, double w, double h, Color colorOval) {
-        Ballons.add(new Ballon(x, y, w, h, colorOval));
+    public Balloon makeBalloon(double x, double y, double w, double h, Color colorOval) {
+    	return new Balloon(x, y, w, h, colorOval);
     }
     
+    public void groupBalloon(Balloon b) {
+    	balloons.add(b);
+    }
     
-    public void drawBallon(Ballon b) {
+    public void makeAndGroupBalloon(double x, double y, double w, double h, Color colorOval) {
+        balloons.add(new Balloon(x, y, w, h, colorOval));
+    }
+    
+    public void drawBalloon(Balloon b) {
         g2.setColor(b.getColorOval());
         g2.fill(b.getOval());
         
@@ -63,8 +71,8 @@ public class Hw3 extends Frame {
         
         g.drawString("select an object with the mouse", 20, 80);
         
-        for (Ballon b : Ballons) {
-            drawBallon(b);
+        for (Balloon b : balloons) {
+            drawBalloon(b);
         }
     }
 
@@ -72,7 +80,7 @@ public class Hw3 extends Frame {
 
         public void mouseClicked(MouseEvent e) {
             
-            for (Ballon b : Ballons) {
+            for (Balloon b : balloons) {
                if (b.getOval().contains(e.getX(), e.getY())) {
             	   b.changeOvalColorTo();
                } 

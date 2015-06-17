@@ -13,8 +13,8 @@ public class Ballon {
     private double h;
     private Color colorOval;
     private Color colorLine;
-    private Color tempOval;
-    private Color tempLine;
+    private Color tempColorOval;
+    private Color tempColorLine;
     private Ellipse2D oval;
     private Line2D line;
     private static final Color DEFAULT_COLOR_OVAL = Color.magenta;
@@ -31,12 +31,35 @@ public class Ballon {
         this.h = h;
         this.colorOval = colorOval;
         this.colorLine = colorLine;
-        this.tempOval = null;
-        this.tempLine = null;
+        this.tempColorOval = null;
+        this.tempColorLine = null;
         oval = new Ellipse2D.Double(this.x, this.y, this.w, this.h);
         line = new Line2D.Double(this.x + (this.w / 2), this.y + this.h, this.x + (this.w / 2), this.y + this.h + 50);
     }
     
+    public void changeOvalColorTo() {
+    	
+    	changeOvalColorTo(null);
+    }
+    
+    
+    public void changeOvalColorTo(Color colorOval) {
+    	if (colorOval == null) {
+        	if (tempColorOval == null) {
+        		this.tempColorOval = this.colorOval;
+        		this.colorOval = DEFAULT_COLOR_OVAL;
+        	} else {
+        		this.colorOval = this.tempColorOval;
+        		this.tempColorOval = null;
+        	}
+    	} else {
+    		if (this.colorOval == colorOval) {
+    			// Do nothing
+    		} else {
+    			this.colorOval = colorOval;
+    		}
+    	}
+    }
     
     public Color getDefaultColorOval() {
     
@@ -153,27 +176,27 @@ public class Ballon {
     }
 
     
-    public Color getTempOval() {
+    public Color getTempColorOval() {
     
-        return tempOval;
+        return tempColorOval;
     }
 
     
-    public void setTempOval(Color tempOval) {
+    public void setTempColorOval(Color tempColorOval) {
     
-        this.tempOval = tempOval;
+        this.tempColorOval = tempColorOval;
     }
 
     
-    public Color getTempLine() {
+    public Color getTempColorLine() {
     
-        return tempLine;
+        return tempColorLine;
     }
 
     
-    public void setTempLine(Color tempLine) {
+    public void setTempColorLine(Color tempColorLine) {
     
-        this.tempLine = tempLine;
+        this.tempColorLine = tempColorLine;
     }
 
     

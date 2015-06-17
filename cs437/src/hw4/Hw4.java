@@ -2,7 +2,6 @@ package hw4;
 
 import java.awt.*;
 import java.awt.event.*;
-import examples.TestFonts;
 
 public class Hw4 extends Frame {
     public Hw4() // constructor
@@ -22,11 +21,6 @@ public class Hw4 extends Frame {
     }
 
     public void paint(Graphics g) {
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Font f[] = ge.getAllFonts();
-        
-        
 
         g.setColor(Color.blue);
         Font f20 = new Font("Chalkboard", Font.BOLD, 20);

@@ -52,8 +52,6 @@ public class Hw5 extends Frame {
         g.setFont(f);
         g.drawString(now.get(GregorianCalendar.MONTH) + "/" + now.get(GregorianCalendar.DATE) + "/" + now.get(GregorianCalendar.YEAR), 180, 200);
         g.drawString(now.get(GregorianCalendar.HOUR) + ":" + now.get(GregorianCalendar.MINUTE) + ":" + now.get(GregorianCalendar.SECOND), 180, 250);
-        	
-
     }
 
     public static void main(String[] args) {

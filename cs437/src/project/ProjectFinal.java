@@ -1,10 +1,14 @@
 package project;
 
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+
 import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 public class ProjectFinal extends JFrame {
 	private static final String TITLE = "Project Tic Tac Toe";
@@ -34,6 +38,8 @@ public class ProjectFinal extends JFrame {
         ticTacToeMenu.add(aboutItem);
         // set up Tic Tac Toe items
         JMenuItem quitItem = new JMenuItem("Quit");
+        quitItem.setMnemonic(KeyEvent.VK_Q);
+        quitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
         ticTacToeMenu.add(quitItem);
         
         // set up file menu

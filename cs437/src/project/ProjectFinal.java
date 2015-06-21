@@ -1,6 +1,8 @@
 package project;
 
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.Box;
@@ -36,10 +38,14 @@ public class ProjectFinal extends JFrame {
         // set up Tic Tac Toe items
         JMenuItem aboutItem = new JMenuItem("About Tic Tac Toe");
         ticTacToeMenu.add(aboutItem);
+        
         // set up Tic Tac Toe items
         JMenuItem quitItem = new JMenuItem("Quit");
+        QuitItemHandler quitHandler = new QuitItemHandler();
         quitItem.setMnemonic(KeyEvent.VK_Q);
         quitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+        quitItem.setToolTipText("Exit application");
+        quitItem.addActionListener(quitHandler);
         ticTacToeMenu.add(quitItem);
         
         // set up file menu
@@ -72,4 +78,10 @@ public class ProjectFinal extends JFrame {
 
 	}
 
+	private class QuitItemHandler implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+		}
+	}
+	
 }

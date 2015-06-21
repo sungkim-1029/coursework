@@ -49,18 +49,28 @@ public class ProjectFinal extends JFrame {
         ticTacToeMenu.add(quitItem);
         
         // set up file menu
-        JMenu gameMenu = new JMenu("Game");
-        menuBar.add(gameMenu); // add Set Value menu to menu bar
+        JMenu fileMenu = new JMenu("File");
+        menuBar.add(fileMenu); // add Set Value menu to menu bar
         // set up File items
         JMenuItem newItem = new JMenuItem("New");
-        gameMenu.add(newItem);
+        fileMenu.add(newItem);
         // set up File items
         JMenuItem openItem = new JMenuItem("Open");
-        gameMenu.add(openItem);
+        fileMenu.add(openItem);
         // set up File items
         JMenuItem saveItem = new JMenuItem("Save");
-        gameMenu.add(saveItem);
+        fileMenu.add(saveItem);
 
+        // set up game menu	
+        JMenu gameMenu = new JMenu("Game");
+        menuBar.add(gameMenu); // add Set Value menu to menu bar
+        // set up game items
+        JMenuItem pauseItem = new JMenuItem("Pause");
+        gameMenu.add(pauseItem);
+        // set up game items
+        JMenuItem resumeItem = new JMenuItem("Resume");
+        gameMenu.add(resumeItem);
+        
         
         // shift to the right
         menuBar.add(Box.createGlue());

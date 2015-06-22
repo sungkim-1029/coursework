@@ -32,7 +32,10 @@ public class ProjectFinal extends JFrame {
 	private JPanel panel;
 	private JButton[] cells;
 	private JLabel playerJerry, playerTom;
-	private Box top, playerBoard;
+	private JLabel jerryWinText, tomWinText;
+	private JLabel jerryWinScore, tomWinScore;
+	private JLabel gameClock;
+	private Box scoreBoard;
 
 	public ProjectFinal() {
 		setTitle(TITLE);
@@ -60,6 +63,42 @@ public class ProjectFinal extends JFrame {
 	}
 
 	private void createScoreBoard() {
+
+		scoreBoard = Box.createHorizontalBox();
+
+		jerryWinText = new JLabel("WINS", JLabel.CENTER);
+		jerryWinText.setFont(new Font("Chalkboard", Font.BOLD, 20));
+		jerryWinText.setForeground(Color.WHITE.darker());
+
+		jerryWinScore = new JLabel("0", JLabel.CENTER);
+		jerryWinScore.setFont(new Font("Chalkboard", Font.BOLD, 20));
+		jerryWinScore.setForeground(Color.WHITE.darker());
+
+		gameClock = new JLabel("5", JLabel.CENTER);
+		gameClock.setFont(new Font("Chalkboard", Font.BOLD, 20));
+		gameClock.setOpaque(true);
+		gameClock.setBackground(Color.GRAY.brighter());
+		gameClock.setForeground(Color.black.darker());
+		//System.out.println(gameClock.getPreferredSize());
+		gameClock.setPreferredSize(new Dimension(50, 30));
+
+		tomWinScore = new JLabel("0", JLabel.CENTER);
+		tomWinScore.setFont(new Font("Chalkboard", Font.BOLD, 20));
+		tomWinScore.setForeground(Color.WHITE.darker());
+
+		tomWinText = new JLabel("WINS", JLabel.CENTER);
+		tomWinText.setFont(new Font("Chalkboard", Font.BOLD, 20));
+		tomWinText.setForeground(Color.WHITE.darker());
+
+		scoreBoard.add(jerryWinText);
+		scoreBoard.add(jerryWinScore);
+		scoreBoard.add(Box.createHorizontalGlue());
+		scoreBoard.add(gameClock);
+		scoreBoard.add(Box.createHorizontalGlue());
+		scoreBoard.add(tomWinScore);
+		scoreBoard.add(tomWinText);
+
+		contentPane.add(scoreBoard);
 
 	}
 

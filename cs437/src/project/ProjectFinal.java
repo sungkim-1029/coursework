@@ -21,26 +21,37 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
+import javax.swing.Timer;
 import javax.swing.border.EtchedBorder;
 
 public class ProjectFinal extends JFrame {
 	private static final String TITLE = "Project Tic Tac Toe";
 	private static final int WIDTH = 450;
 	private static final int HEIGHT = 472;
+	public final static int ONE_SECOND = 1000;
 
 	private Container contentPane;
 	private JPanel panel;
 	private JButton[] cells;
+	private CellButtonHandler[] cellHandlers;
 	private JLabel playerJerry, playerTom;
 	private JLabel jerryWinText, tomWinText;
 	private JLabel jerryWinScore, tomWinScore;
 	private JLabel gameClock;
-	private Box scoreBoard;
+	private Box playerBoard, scoreBoard;
+	private Integer clock;
+	private Timer timer;
+	private boolean timeOut;
+
+	//private GregorianCalendar now;
 
 	public ProjectFinal() {
 		setTitle(TITLE);
 		setSize(WIDTH, HEIGHT);
+		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		clock = 5;
+		timeOut = false;
 
 		createMenuBar();
 
@@ -52,41 +63,106 @@ public class ProjectFinal extends JFrame {
 		createPlayerBoard();
 		createGameBoard();
 
-
-        //System.out.println(menuBar.getPreferredSize());
-		pack();
-        setVisible(true);
+		init();
 	}
+
+	private void countingClock() {
+
+		if (clock.intValue() > 0 || clock.intValue() < 5) {
+			timer.stop();
+			clock = 5;
+			gameClock.setText(clock.toString());
+
+		} else {
+			// Do nothing
+		}
+
+        timer.start();
+	}
+
 
 	private void createGameBoard() {
 
+		panel = new JPanel(new GridLayout(3, 3));
+		panel.setOpaque(false);
+
+		// Create cells and handlers
+		cells = new JButton[9];
+		cellHandlers = new CellButtonHandler[9];
+		for (int i = 0; i < 9; i++) {
+			char ch = (char) ('0' + i + 1);
+			cells[i] = new JButton("" + ch);
+			cellHandlers[i] = new CellButtonHandler();
+			cells[i].addActionListener(cellHandlers[i]);
+		}
+
+		// Add elements to the grid content pane
+		for (int i = 0; i < 9; i++) {
+			panel.add(cells[i]);
+		}
+
+		contentPane.add(panel);
 	}
+
+	private void init() {
+		// Initialize booleans
+		//noughts = true;
+		//gameOver = false;
+
+		// Initialize text in buttons
+		for (int i = 0; i < 9; i++) {
+			char ch = (char) ('0' + i + 1);
+			cells[i].setText("" + ch);
+		}
+
+		// Initialize result label
+		//result.setText("Noughts");
+
+		//Create a timer.
+        timer = new Timer(ONE_SECOND, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+            	clock--;
+            	gameClock.setText(clock.toString());
+
+            	if (clock.intValue() == 0) {
+            		timer.stop();
+            		System.out.println("Time Out");
+            		timeOut = true;
+            		// clock is 0
+            		// Do something
+            	}
+            }
+        });
+
+		//pack();
+		setVisible(true);
+	}
+
 
 	private void createScoreBoard() {
 
 		scoreBoard = Box.createHorizontalBox();
 
-		jerryWinText = new JLabel("WINS", JLabel.CENTER);
+		jerryWinText = new JLabel("WINS: ", JLabel.CENTER);
 		jerryWinText.setFont(new Font("Chalkboard", Font.BOLD, 20));
 		jerryWinText.setForeground(Color.WHITE.darker());
 
-		jerryWinScore = new JLabel("0", JLabel.CENTER);
+		jerryWinScore = new JLabel("0", JLabel.RIGHT);
 		jerryWinScore.setFont(new Font("Chalkboard", Font.BOLD, 20));
-		jerryWinScore.setForeground(Color.WHITE.darker());
+		jerryWinScore.setForeground(Color.WHITE.brighter());
 
-		gameClock = new JLabel("5", JLabel.CENTER);
+		gameClock = new JLabel(clock.toString(), JLabel.CENTER);
 		gameClock.setFont(new Font("Chalkboard", Font.BOLD, 20));
 		gameClock.setOpaque(true);
 		gameClock.setBackground(Color.GRAY.brighter());
 		gameClock.setForeground(Color.black.darker());
-		//System.out.println(gameClock.getPreferredSize());
 		gameClock.setPreferredSize(new Dimension(50, 30));
 
-		tomWinScore = new JLabel("0", JLabel.CENTER);
+		tomWinScore = new JLabel("0", JLabel.LEFT);
 		tomWinScore.setFont(new Font("Chalkboard", Font.BOLD, 20));
-		tomWinScore.setForeground(Color.WHITE.darker());
+		tomWinScore.setForeground(Color.WHITE.brighter());
 
-		tomWinText = new JLabel("WINS", JLabel.CENTER);
+		tomWinText = new JLabel(" :WINS", JLabel.CENTER);
 		tomWinText.setFont(new Font("Chalkboard", Font.BOLD, 20));
 		tomWinText.setForeground(Color.WHITE.darker());
 
@@ -104,26 +180,27 @@ public class ProjectFinal extends JFrame {
 
 	private void createPlayerBoard() {
 
-		panel = new JPanel(new GridLayout(0, 2));
+		playerBoard = Box.createHorizontalBox();
 
 		playerJerry = new JLabel("Jerry", JLabel.CENTER);
 		playerJerry.setFont(new Font("Chalkboard", Font.BOLD, 20));
 		playerJerry.setOpaque(true);
 		playerJerry.setBackground(Color.gray.brighter());
 		playerJerry.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-		playerJerry.setPreferredSize(new Dimension(220, 50));
+		playerJerry.setPreferredSize(new Dimension(200, 30));
 
 		playerTom = new JLabel("Tom", JLabel.CENTER);
 		playerTom.setFont(new Font("Chalkboard", Font.BOLD, 20));
 		playerTom.setOpaque(true);
 		playerTom.setBackground(Color.gray.brighter());
 		playerTom.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
-		playerTom.setPreferredSize(new Dimension(220, 50));
+		playerTom.setPreferredSize(new Dimension(200, 30));
 
-		panel.add(playerJerry);
-		panel.add(playerTom);
+		playerBoard.add(playerJerry);
+		playerBoard.add(Box.createHorizontalGlue());
+		playerBoard.add(playerTom);
 
-		contentPane.add(panel);
+		contentPane.add(playerBoard);
 	}
 
 	private void createMenuBar() {
@@ -196,6 +273,65 @@ public class ProjectFinal extends JFrame {
 			System.exit(0);
 		}
 	}
+
+	private class CellButtonHandler implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+
+
+			countingClock();
+
+			System.out.println("Button pushed");
+
+
+			/*
+			// If game over, ignore
+			if (gameOver) {
+				return;
+			}
+
+			// Get button pressed
+			JButton pressed = (JButton) (e.getSource());
+
+			// Get text of button
+			String text = pressed.getText();
+
+			// If noughts or crosses, ignore
+			if (text.equals("O") || text.equals("X")) {
+				return;
+			}
+
+			// Add nought or cross
+			if (noughts) {
+				pressed.setText("O");
+			} else {
+				pressed.setText("X");
+			}
+
+			// Check winner
+			if (checkWinner()) {
+				// End of game
+				gameOver = true;
+
+				// Display winner message
+				if (noughts) {
+					result.setText("Noughts win!!");
+				} else {
+					result.setText("Crosses win!");
+				}
+			} else {
+				// Change player
+				noughts = !noughts;
+
+				// Display player message
+				if (noughts) {
+					result.setText("Noughts");
+				} else {
+					result.setText("Crosses");
+				}
+			}*/
+		}
+	}
+
 
 }
 

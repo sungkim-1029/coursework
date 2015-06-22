@@ -1,21 +1,38 @@
 package project;
 
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
+import javax.swing.border.EtchedBorder;
 
 public class ProjectFinal extends JFrame {
 	private static final String TITLE = "Project Tic Tac Toe";
 	private static final int WIDTH = 450;
 	private static final int HEIGHT = 472;
+
+	private Container contentPane;
+	private JPanel panel;
+	private JButton[] cells;
+	private JLabel playerJerry, playerTom;
+	private Box top, playerBoard;
 
 	public ProjectFinal() {
 		setTitle(TITLE);
@@ -23,22 +40,65 @@ public class ProjectFinal extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		createMenuBar();
-		
+
+		contentPane = getContentPane();
+		contentPane.setBackground(Color.blue.darker());
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
+
+		createScoreBoard();
+		createPlayerBoard();
+		createGameBoard();
+
+
         //System.out.println(menuBar.getPreferredSize());
+		pack();
         setVisible(true);
 	}
-	
+
+	private void createGameBoard() {
+
+	}
+
+	private void createScoreBoard() {
+
+	}
+
+	private void createPlayerBoard() {
+
+		panel = new JPanel(new GridLayout(0, 2));
+
+		playerJerry = new JLabel("Jerry", JLabel.CENTER);
+		playerJerry.setFont(new Font("Chalkboard", Font.BOLD, 20));
+		playerJerry.setOpaque(true);
+		playerJerry.setBackground(Color.gray.brighter());
+		playerJerry.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+		playerJerry.setPreferredSize(new Dimension(220, 50));
+
+		playerTom = new JLabel("Tom", JLabel.CENTER);
+		playerTom.setFont(new Font("Chalkboard", Font.BOLD, 20));
+		playerTom.setOpaque(true);
+		playerTom.setBackground(Color.gray.brighter());
+		playerTom.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+		playerTom.setPreferredSize(new Dimension(220, 50));
+
+		panel.add(playerJerry);
+		panel.add(playerTom);
+
+		contentPane.add(panel);
+	}
+
 	private void createMenuBar() {
+
         // Just create menubar
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
-        
+
         JMenu ticTacToeMenu = new JMenu("Tic Tac Toe");
         menuBar.add(ticTacToeMenu);
         // set up Tic Tac Toe items
         JMenuItem aboutItem = new JMenuItem("About Tic Tac Toe");
         ticTacToeMenu.add(aboutItem);
-        
+
         // set up Tic Tac Toe items
         JMenuItem quitItem = new JMenuItem("Quit");
         QuitItemHandler quitHandler = new QuitItemHandler();
@@ -47,7 +107,7 @@ public class ProjectFinal extends JFrame {
         quitItem.setToolTipText("Exit application");
         quitItem.addActionListener(quitHandler);
         ticTacToeMenu.add(quitItem);
-        
+
         // set up file menu
         JMenu fileMenu = new JMenu("File");
         menuBar.add(fileMenu); // add Set Value menu to menu bar
@@ -61,27 +121,31 @@ public class ProjectFinal extends JFrame {
         JMenuItem saveItem = new JMenuItem("Save");
         fileMenu.add(saveItem);
 
-        // set up game menu	
+        // set up game menu
         JMenu gameMenu = new JMenu("Game");
         menuBar.add(gameMenu); // add Set Value menu to menu bar
         // set up game items
-        JMenuItem pauseItem = new JMenuItem("Pause");
-        gameMenu.add(pauseItem);
-        // set up game items
-        JMenuItem resumeItem = new JMenuItem("Resume");
-        gameMenu.add(resumeItem);
-        
-        
+        JMenuItem togglePauseItem = new JMenuItem("Pause/Resume");
+        gameMenu.add(togglePauseItem);
+        // Add separator
+        gameMenu.add(new JSeparator());
+        // set up game menu
+        JMenuItem clockUpItem = new JMenuItem("Clock Up 1s");
+        gameMenu.add(clockUpItem);
+        // set up game menu
+        JMenuItem clockDownItem = new JMenuItem("Clock Down 1s");
+        gameMenu.add(clockDownItem);
+
         // shift to the right
         menuBar.add(Box.createGlue());
-        
+
         JMenu helpMenu = new JMenu("Help");
         menuBar.add(helpMenu);
         // set up Help items
         JMenuItem howToPlayItem = new JMenuItem("How to play");
         helpMenu.add(howToPlayItem);
 	}
-	
+
 	public static void main(String[] args) {
 		// Create ProjectFinal object
 		ProjectFinal pf = new ProjectFinal();
@@ -93,5 +157,19 @@ public class ProjectFinal extends JFrame {
 			System.exit(0);
 		}
 	}
-	
+
 }
+
+/*
+ImageIcon iconJerryStanding = new ImageIcon(this.getClass().getResource("images/standing_jerry.jpg"));
+ImageIcon iconTomStanding = new ImageIcon(this.getClass().getResource("images/standing_tom.jpg"));
+*/
+
+/*
+playerJerry = new JLabel("", iconJerryStanding, JLabel.CENTER);
+playerJerry.setSize(225, 20);
+playerTom = new JLabel("", iconTomStanding, JLabel.CENTER);
+playerTom.setSize(225, 20);
+panel.add(playerJerry);
+panel.add(playerTom);
+*/

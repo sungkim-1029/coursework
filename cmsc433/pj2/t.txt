@@ -1,0 +1,16 @@
+
+# Key: ‘filedir’ à Value: Path to the directory containing the text files to be analyzed
+
+filedir:/Users/sunghokim/Documents/My_stuff/USA Life/Classes_UMBC/2015_Fall/CMSC433_Scripting_languages/exam1/shakespeare/comedies
+
+# Key: ‘tfoutput’ à Value: Path to the output file for the Term Frequency (TF)
+
+tfoutput:/Users/sunghokim/Documents/programming_workspace/git/coursework/cmsc433/pj2/tfoutput.txt
+
+# Key: ‘idfoutput’ à Value: Path to the output file for the Inverse Document Frequency (IDF)
+
+idfoutput:/Users/sunghokim/Documents/programming_workspace/git/coursework/cmsc433/pj2/idfoutput.txt
+
+# Key: ‘tf- idfoutput’ à Value: Path to the output file for the TF-IDF
+
+tf-idfoutput:/Users/sunghokim/Documents/programming_workspace/git/coursework/cmsc433/pj2/tf-idfoutput.txt

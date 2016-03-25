@@ -1,0 +1,59 @@
+------------------------------------------------------------------------------
+Source: 1 -> Destination: 5
+1 -> 2 -> 5
+Total distance: 6
+------------------------------------------------------------------------------
+
+Routing table of node 1
+Dest	 Next hop	 Distance	
+1		 1		 0
+2		 2		 4
+3		 2		 7
+4		 2		 9
+5		 2		 6
+6		 2		 11
+
+Routing table of node 2
+Dest	 Next hop	 Distance	
+1		 1		 4
+2		 2		 0
+3		 3		 3
+4		 5		 5
+5		 5		 2
+6		 5		 7
+
+Routing table of node 3
+Dest	 Next hop	 Distance	
+1		 2		 7
+2		 2		 3
+3		 3		 0
+4		 4		 5
+5		 2		 5
+6		 4		 7
+
+Routing table of node 4
+Dest	 Next hop	 Distance	
+1		 5		 9
+2		 5		 5
+3		 3		 5
+4		 4		 0
+5		 5		 3
+6		 6		 2
+
+Routing table of node 5
+Dest	 Next hop	 Distance	
+1		 2		 6
+2		 2		 2
+3		 2		 5
+4		 4		 3
+5		 5		 0
+6		 6		 5
+
+Routing table of node 6
+Dest	 Next hop	 Distance	
+1		 5		 11
+2		 5		 7
+3		 4		 7
+4		 4		 2
+5		 5		 5
+6		 6		 0
